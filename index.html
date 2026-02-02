@@ -3,284 +3,165 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Belajar Niat Sholat</title>
+    <title>Belajar Niat Sholat - Edisi Ceria</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Quicksand:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Fredoka:wght@400;500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            /* Background Utama dengan nuansa biru sangat muda */
-            --bg-app: #F6F9FC; 
+            /* Background */
+            --bg-body: #EEF2FF;
+            --bg-card: #FFFFFF;
             
-            /* Warna Teks */
-            --text-dark: #1E293B;
-            --text-gray: #64748B;
-            --white: #ffffff;
+            /* Text Colors */
+            --text-main: #334155;
+            --text-sub: #64748B;
             
-            /* --- PALET GRADIEN PREMIUM (Vibrant -> Soft) --- */
-            
-            /* 1. Subuh (Teal/Green) */
-            --grad-fajr-1: #10B981; --grad-fajr-2: #6EE7B7;
-            
-            /* 2. Zuhur (Golden/Yellow) */
-            --grad-dhuhr-1: #F59E0B; --grad-dhuhr-2: #FDE68A;
-            
-            /* 3. Ashar (Orange/Coral) */
-            --grad-asr-1: #F97316; --grad-asr-2: #FDBA74;
-            
-            /* 4. Maghrib (Royal Blue) */
-            --grad-maghrib-1: #3B82F6; --grad-maghrib-2: #93C5FD;
-            
-            /* 5. Isya (Violet/Purple) */
-            --grad-isha-1: #8B5CF6; --grad-isha-2: #C4B5FD;
+            /* --- TEMA WARNA SHOLAT (Pastel & Vibrant) --- */
+            /* Subuh (Teal/Segar) */
+            --c-subuh: #2DD4BF; --c-subuh-dark: #0F766E; --bg-subuh: #F0FDFA;
+            /* Zuhur (Kuning/Cerah) */
+            --c-zuhur: #FBBF24; --c-zuhur-dark: #B45309; --bg-zuhur: #FFFBEB;
+            /* Ashar (Orange/Sore) */
+            --c-ashar: #FB923C; --c-ashar-dark: #C2410C; --bg-ashar: #FFF7ED;
+            /* Maghrib (Biru Langit/Senja) */
+            --c-maghrib: #60A5FA; --c-maghrib-dark: #1D4ED8; --bg-maghrib: #EFF6FF;
+            /* Isya (Ungu/Malam) */
+            --c-isya: #A78BFA; --c-isya-dark: #6D28D9; --bg-isya: #F5F3FF;
         }
 
         * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
+            box-sizing: border-box; margin: 0; padding: 0;
             -webkit-tap-highlight-color: transparent;
         }
 
         body {
-            font-family: 'Quicksand', sans-serif;
-            background-color: var(--bg-app);
-            color: var(--text-dark);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            
-            /* Pattern Background Halus */
-            background-image: radial-gradient(#CBD5E1 1px, transparent 1px);
+            font-family: 'Fredoka', sans-serif; /* Font bulat lucu */
+            background-color: var(--bg-body);
+            background-image: radial-gradient(#C7D2FE 2px, transparent 2px);
             background-size: 24px 24px;
-        }
-
-        /* --- CONTAINER UTAMA (Mobile Look) --- */
-        .mobile-container {
-            width: 100%;
-            max-width: 480px; /* Ukuran ideal seperti aplikasi HP */
-            background: rgba(255, 255, 255, 0.6); /* Sedikit transparan */
-            backdrop-filter: blur(10px); /* Efek kaca */
+            color: var(--text-main);
             min-height: 100vh;
-            padding: 40px 20px 60px 20px;
-            box-shadow: 0 0 40px rgba(0,0,0,0.05); /* Shadow container di desktop */
-            position: relative;
-        }
-
-        /* --- HEADER SECTION --- */
-        header {
-            margin-bottom: 30px;
-        }
-
-        .header-card {
-            background: var(--white);
-            padding: 24px;
-            border-radius: 24px;
-            /* Drop Shadow Premium */
-            box-shadow: 
-                0 4px 6px -1px rgba(0, 0, 0, 0.05), 
-                0 10px 15px -3px rgba(0, 0, 0, 0.03);
-            margin-bottom: 25px;
-            position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.8);
-        }
-
-        /* Dekorasi Header */
-        .header-card::after {
-            content: "";
-            position: absolute;
-            top: -20px;
-            right: -20px;
-            width: 90px;
-            height: 90px;
-            background: #FEF3C7;
-            border-radius: 50%;
-            opacity: 0.6;
-            z-index: 0;
-        }
-
-        .greeting-text {
-            font-size: 0.9rem;
-            color: var(--text-gray);
-            font-weight: 600;
-            margin-bottom: 4px;
-            position: relative; z-index: 1;
-        }
-
-        .main-question {
-            font-size: 1.4rem;
-            font-weight: 800;
-            color: var(--text-dark);
-            line-height: 1.3;
-            position: relative; z-index: 1;
-        }
-
-        .app-title {
-            text-align: left;
-            margin-bottom: 10px;
-        }
-
-        .badge-pill {
-            display: inline-block;
-            background: #DBEAFE;
-            color: #1E40AF;
-            padding: 6px 14px;
-            border-radius: 50px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            margin-bottom: 12px;
-            letter-spacing: 0.5px;
-        }
-
-        .big-headline {
-            font-size: 1.5rem;
-            font-weight: 800;
-            line-height: 1.25;
-            color: #0F172A;
-        }
-        
-        .highlight-blue { color: #3B82F6; }
-        .highlight-pink { color: #EC4899; }
-
-        /* --- CARD STYLE (IMPROVISED) --- */
-        .prayer-list {
             display: flex;
             flex-direction: column;
-            gap: 18px;
+            align-items: center;
+            padding: 20px;
         }
 
-        .prayer-card {
-            background: transparent;
-            border-radius: 24px;
-            /* Kita tidak set overflow hidden di parent agar shadow child terlihat bagus */
+        /* --- CONTAINER UTAMA (RESPONSIF) --- */
+        .app-container {
+            width: 100%;
+            max-width: 1000px; /* Lebar maksimal di desktop */
+            margin: 0 auto;
         }
 
-        /* --- HEAD (TOMBOL WARNA) --- */
-        .card-head {
-            height: 90px;
+        /* --- HEADER --- */
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+            border-radius: 25px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            border: 2px solid #FFFFFF;
+        }
+
+        .header-emoji { font-size: 3rem; margin-bottom: 5px; animation: bounce 2s infinite; display: inline-block; }
+        h1 { color: #4F46E5; font-size: 1.8rem; margin-bottom: 5px; }
+        p.subtitle { color: var(--text-sub); font-family: 'Nunito', sans-serif; font-size: 1rem; }
+
+        /* --- GRID LAYOUT --- */
+        .prayer-grid {
+            display: grid;
+            grid-template-columns: 1fr; /* Default Mobile: 1 Kolom */
+            gap: 20px;
+            width: 100%;
+        }
+
+        /* Tablet & Desktop: 2 Kolom atau lebih */
+        @media (min-width: 700px) {
+            .prayer-grid {
+                grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+                align-items: start; /* Mencegah kartu melar ke bawah jika sebelahnya panjang */
+            }
+        }
+
+        /* --- CARD STYLE --- */
+        .card {
+            background: var(--bg-card);
             border-radius: 24px;
-            padding: 0 20px;
+            overflow: hidden;
+            border: 3px solid transparent; /* Untuk hover state */
+            box-shadow: 0 8px 0 rgba(0,0,0,0.05); /* Efek 3D halus */
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+        }
+
+        .card:hover { transform: translateY(-5px); }
+
+        /* HEADER KARTU (TOMBOL KLIK) */
+        .card-header {
+            padding: 15px 20px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             cursor: pointer;
+            user-select: none;
+            background: white;
             position: relative;
             z-index: 2;
-            transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
-            
-            /* Deep Colored Shadow (sesuai warna kartu) */
-            box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.15); 
         }
 
-        .card-head:active { transform: scale(0.97); }
-
-        /* Icon Container */
-        .icon-wrap {
-            width: 54px;
-            height: 54px;
-            background: rgba(255,255,255,0.95);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            margin-right: 16px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            flex-shrink: 0;
-        }
-
-        .card-info {
-            flex: 1;
-            color: white;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.1); /* Text shadow halus */
-        }
-
-        .info-title {
-            font-size: 1.2rem;
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 4px;
-        }
+        .header-left { display: flex; align-items: center; gap: 15px; }
         
-        /* Subtitle menyesuaikan gambar referensi (agak transparan) */
-        .info-subtitle {
-            font-size: 0.85rem;
-            font-weight: 600;
-            opacity: 0.9; 
+        .icon-box {
+            width: 50px; height: 50px;
+            border-radius: 16px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.8rem;
+            flex-shrink: 0;
+            color: white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
+
+        .title-group h3 { font-size: 1.2rem; margin-bottom: 2px; }
+        .title-group span { font-size: 0.85rem; font-family: 'Nunito', sans-serif; font-weight: 700; opacity: 0.7; }
 
         .rakaat-badge {
-            background: var(--white);
-            color: var(--text-dark);
-            padding: 8px 14px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 800;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            min-width: 80px;
-            text-align: center;
-        }
-
-        /* --- VARIASI WARNA (GRADASI HALUS KIRI KE KANAN) --- */
-        /* Kita pakai pseudo-element untuk efek glare/kilau jika mau, tapi linear-gradient simple lebih bersih */
-        
-        .fajr .card-head { 
-            background: linear-gradient(95deg, var(--grad-fajr-1) 0%, var(--grad-fajr-2) 100%);
-            box-shadow: 0 12px 20px -6px rgba(16, 185, 129, 0.3); /* Colored shadow */
-        }
-        .dhuhr .card-head { 
-            background: linear-gradient(95deg, var(--grad-dhuhr-1) 0%, var(--grad-dhuhr-2) 100%);
-            box-shadow: 0 12px 20px -6px rgba(245, 158, 11, 0.3);
-        }
-        .asr .card-head { 
-            background: linear-gradient(95deg, var(--grad-asr-1) 0%, var(--grad-asr-2) 100%);
-            box-shadow: 0 12px 20px -6px rgba(249, 115, 22, 0.3);
-        }
-        .maghrib .card-head { 
-            background: linear-gradient(95deg, var(--grad-maghrib-1) 0%, var(--grad-maghrib-2) 100%);
-            box-shadow: 0 12px 20px -6px rgba(59, 130, 246, 0.3);
-        }
-        .isha .card-head { 
-            background: linear-gradient(95deg, var(--grad-isha-1) 0%, var(--grad-isha-2) 100%);
-            box-shadow: 0 12px 20px -6px rgba(139, 92, 246, 0.3);
-        }
-
-        /* --- EXPANDABLE BODY --- */
-        .card-content {
-            background: var(--white);
-            margin-top: -24px; /* Negative margin untuk overlap */
-            padding: 40px 24px 24px 24px;
-            border-bottom-left-radius: 24px;
-            border-bottom-right-radius: 24px;
-            box-shadow: 0 15px 30px -5px rgba(0,0,0,0.06);
-            display: none;
-            position: relative;
-            z-index: 1;
-            border: 1px solid #F1F5F9;
-            border-top: none;
-        }
-
-        .card-content.open {
-            display: block;
-            animation: slideOpen 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        @keyframes slideOpen {
-            from { opacity: 0; transform: translateY(-15px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* --- SEGMENTED CONTROL (TAB SWITCHER) --- */
-        .tab-wrapper {
             background: #F1F5F9;
+            color: var(--text-sub);
+            padding: 6px 12px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        /* BODY KARTU (KONTEN) */
+        .card-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out; /* Smooth slide */
+            background: white;
+        }
+        
+        .card.active .card-body {
+            max-height: 800px; /* Cukup besar untuk menampung konten */
+            transition: max-height 0.5s ease-in;
+        }
+
+        .content-wrapper { padding: 20px; border-top: 2px dashed #F1F5F9; }
+
+        /* TABS (SENDIRI / MAKMUM) */
+        .tabs {
+            background: #F8FAFC;
             padding: 5px;
-            border-radius: 16px;
+            border-radius: 15px;
             display: flex;
-            margin-bottom: 25px;
-            position: relative;
+            margin-bottom: 20px;
+            border: 1px solid #E2E8F0;
         }
 
         .tab-btn {
@@ -288,216 +169,250 @@
             border: none;
             background: transparent;
             padding: 10px;
-            font-family: 'Quicksand', sans-serif;
-            font-weight: 700;
-            font-size: 0.9rem;
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 600;
             color: #94A3B8;
             cursor: pointer;
             border-radius: 12px;
-            transition: all 0.2s ease;
-            position: relative;
-            z-index: 2;
+            transition: 0.2s;
         }
 
         .tab-btn.active {
-            background: var(--white);
-            color: var(--text-dark);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            transform: scale(1);
+            background: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            color: var(--text-main);
         }
 
-        /* --- TYPOGRAPHY ARAB & LATIN --- */
-        .niat-box { display: none; }
-        .niat-box.active { display: block; animation: fadeEffect 0.4s; }
+        /* TEXT NIAT */
+        .niat-container { display: none; animation: fadeIn 0.3s; }
+        .niat-container.show { display: block; }
 
         .arabic {
             font-family: 'Amiri', serif;
-            font-size: 2.4rem; /* Diperbesar */
-            color: var(--text-dark);
+            font-size: 2.2rem;
             text-align: right;
-            direction: rtl;
-            line-height: 2.3;
+            line-height: 2.2;
+            color: var(--text-main);
             margin-bottom: 15px;
-            padding-bottom: 15px;
-            border-bottom: 2px dashed #E2E8F0;
+            direction: rtl;
         }
 
         .latin {
-            font-size: 1.1rem;
+            font-family: 'Nunito', sans-serif;
+            font-size: 1.05rem;
             font-weight: 700;
             color: #475569;
-            font-style: italic;
-            margin-bottom: 12px;
-            line-height: 1.6;
+            margin-bottom: 10px;
+            line-height: 1.5;
         }
 
-        .meaning {
+        .arti {
             background: #F8FAFC;
-            border-left: 4px solid #CBD5E0;
-            padding: 15px;
+            padding: 12px;
             border-radius: 12px;
+            font-family: 'Nunito', sans-serif;
             font-size: 0.95rem;
             color: #64748B;
-            line-height: 1.6;
+            font-style: italic;
+            border-left: 4px solid #CBD5E0;
         }
 
-        @keyframes fadeEffect { from { opacity: 0; } to { opacity: 1; } }
+        /* --- TEMA WARNA SPESIFIK (CSS VARIABLES) --- */
+        /* Subuh */
+        .card.subuh .icon-box { background: var(--c-subuh); }
+        .card.subuh.active { border-color: var(--c-subuh); background: var(--bg-subuh); }
+        .card.subuh .tab-btn.active { color: var(--c-subuh-dark); }
+        
+        /* Zuhur */
+        .card.zuhur .icon-box { background: var(--c-zuhur); }
+        .card.zuhur.active { border-color: var(--c-zuhur); background: var(--bg-zuhur); }
+        .card.zuhur .tab-btn.active { color: var(--c-zuhur-dark); }
+
+        /* Ashar */
+        .card.ashar .icon-box { background: var(--c-ashar); }
+        .card.ashar.active { border-color: var(--c-ashar); background: var(--bg-ashar); }
+        .card.ashar .tab-btn.active { color: var(--c-ashar-dark); }
+
+        /* Maghrib */
+        .card.maghrib .icon-box { background: var(--c-maghrib); }
+        .card.maghrib.active { border-color: var(--c-maghrib); background: var(--bg-maghrib); }
+        .card.maghrib .tab-btn.active { color: var(--c-maghrib-dark); }
+
+        /* Isya */
+        .card.isya .icon-box { background: var(--c-isya); }
+        .card.isya.active { border-color: var(--c-isya); background: var(--bg-isya); }
+        .card.isya .tab-btn.active { color: var(--c-isya-dark); }
 
         /* Footer */
-        footer {
-            text-align: center;
-            margin-top: 40px;
-            font-size: 0.85rem;
-            color: var(--text-gray);
-            font-weight: 600;
-        }
+        footer { margin-top: 40px; color: var(--text-sub); font-size: 0.9rem; text-align: center; font-weight: 600; padding-bottom: 20px;}
+
+        @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-10px);} 60% {transform: translateY(-5px);} }
+        @keyframes fadeIn { from{opacity: 0; transform: translateY(5px);} to{opacity: 1; transform: translateY(0);} }
 
     </style>
 </head>
 <body>
 
-    <div class="mobile-container">
-        
+    <div class="app-container">
         <header>
-            <div class="header-card">
-                <div class="greeting-text">Assalamu'alaikum! 👋</div>
-                <div class="main-question">Adik, hari ini mau menghafal niat sholat apa?</div>
-            </div>
+            <div class="header-emoji">🕌</div>
+            <h1>Hafalan Niat Sholat</h1>
+            <p class="subtitle">Yuk, pilih sholat apa yang ingin kamu pelajari!</p>
         </header>
 
-        <div class="prayer-list">
+        <div class="prayer-grid">
 
-            <div class="prayer-card fajr" id="fajr">
-                <div class="card-head" onclick="toggleCard('fajr')">
-                    <div class="icon-wrap">🌅</div>
-                    <div class="card-info">
-                        <div class="info-title">Sholat Subuh</div>
-                        <div class="info-subtitle">Niat & Bacaan</div>
+            <div class="card subuh" id="card-subuh">
+                <div class="card-header" onclick="toggleCard('subuh')">
+                    <div class="header-left">
+                        <div class="icon-box">🌅</div>
+                        <div class="title-group">
+                            <h3>Subuh</h3>
+                            <span style="color:var(--c-subuh-dark)">Sholat Pagi</span>
+                        </div>
                     </div>
                     <div class="rakaat-badge">2 Rakaat</div>
                 </div>
-                <div class="card-content">
-                    <div class="tab-wrapper">
-                        <button class="tab-btn active" onclick="switchTab('fajr', 'alone', event)">Sendiri</button>
-                        <button class="tab-btn" onclick="switchTab('fajr', 'makmum', event)">Makmum</button>
-                    </div>
-                    <div class="niat-box active" data-role="alone">
-                        <div class="arabic">أُصَلِّي فَرْضَ الصُّبْحِ رَكْعَتَيْنِ مُسْتَقْبِلَ الْقِبْلَةِ أَدَاءً لِلّٰهِ تَعَالَى</div>
-                        <div class="latin">Ushalli fardhash-Shubhi rak'ataini mustaqbilal-qiblati adaa-an lillaahi ta'aala.</div>
-                        <div class="meaning">"Aku niat sholat fardhu Subuh dua rakaat menghadap kiblat saat ini karena Allah Ta'ala."</div>
-                    </div>
-                    <div class="niat-box" data-role="makmum">
-                        <div class="arabic">أُصَلِّي فَرْضَ الصُّبْحِ رَكْعَتَيْنِ مُسْتَقْبِلَ الْقِبْلَةِ مَأْمُوْمًا لِلّٰهِ تَعَالَى</div>
-                        <div class="latin">Ushalli fardhash-Shubhi rak'ataini mustaqbilal-qiblati ma'muuman lillaahi ta'aala.</div>
-                        <div class="meaning">"Aku niat sholat fardhu Subuh dua rakaat menghadap kiblat sebagai makmum karena Allah Ta'ala."</div>
+                <div class="card-body">
+                    <div class="content-wrapper">
+                        <div class="tabs">
+                            <button class="tab-btn active" onclick="switchTab('subuh', 'alone', event)">Sendiri</button>
+                            <button class="tab-btn" onclick="switchTab('subuh', 'makmum', event)">Makmum</button>
+                        </div>
+                        <div class="niat-container show" data-type="alone">
+                            <div class="arabic">أُصَلِّي فَرْضَ الصُّبْحِ رَكْعَتَيْنِ مُسْتَقْبِلَ الْقِبْلَةِ أَدَاءً لِلّٰهِ تَعَالَى</div>
+                            <div class="latin">Ushalli fardhash-Shubhi rak'ataini mustaqbilal-qiblati adaa-an lillaahi ta'aala.</div>
+                            <div class="arti">"Aku niat sholat fardhu Subuh dua rakaat menghadap kiblat saat ini karena Allah Ta'ala."</div>
+                        </div>
+                        <div class="niat-container" data-type="makmum">
+                            <div class="arabic">أُصَلِّي فَرْضَ الصُّبْحِ رَكْعَتَيْنِ مُسْتَقْبِلَ الْقِبْلَةِ مَأْمُوْمًا لِلّٰهِ تَعَالَى</div>
+                            <div class="latin">Ushalli fardhash-Shubhi rak'ataini mustaqbilal-qiblati ma'muuman lillaahi ta'aala.</div>
+                            <div class="arti">"Aku niat sholat fardhu Subuh dua rakaat menghadap kiblat sebagai makmum karena Allah Ta'ala."</div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="prayer-card dhuhr" id="dhuhr">
-                <div class="card-head" onclick="toggleCard('dhuhr')">
-                    <div class="icon-wrap">☀️</div>
-                    <div class="card-info">
-                        <div class="info-title">Sholat Zuhur</div>
-                        <div class="info-subtitle">Niat & Bacaan</div>
+            <div class="card zuhur" id="card-zuhur">
+                <div class="card-header" onclick="toggleCard('zuhur')">
+                    <div class="header-left">
+                        <div class="icon-box">☀️</div>
+                        <div class="title-group">
+                            <h3>Zuhur</h3>
+                            <span style="color:var(--c-zuhur-dark)">Sholat Siang</span>
+                        </div>
                     </div>
                     <div class="rakaat-badge">4 Rakaat</div>
                 </div>
-                <div class="card-content">
-                    <div class="tab-wrapper">
-                        <button class="tab-btn active" onclick="switchTab('dhuhr', 'alone', event)">Sendiri</button>
-                        <button class="tab-btn" onclick="switchTab('dhuhr', 'makmum', event)">Makmum</button>
-                    </div>
-                    <div class="niat-box active" data-role="alone">
-                        <div class="arabic">أُصَلِّي فَرْضَ الظُّهْرِ أَرْبَعَ رَكَعَاتٍ مُسْتَقْبِلَ الْقِبْلَةِ أَدَاءً لِلّٰهِ تَعَالَى</div>
-                        <div class="latin">Ushalli fardhaz-Zhuhri arba'a raka'aatin mustaqbilal-qiblati adaa-an lillaahi ta'aala.</div>
-                        <div class="meaning">"Aku niat sholat fardhu Zuhur empat rakaat menghadap kiblat saat ini karena Allah Ta'ala."</div>
-                    </div>
-                    <div class="niat-box" data-role="makmum">
-                        <div class="arabic">أُصَلِّي فَرْضَ الظُّهْرِ أَرْبَعَ رَكَعَاتٍ مُسْتَقْبِلَ الْقِبْلَةِ مَأْمُوْمًا لِلّٰهِ تَعَالَى</div>
-                        <div class="latin">Ushalli fardhaz-Zhuhri arba'a raka'aatin mustaqbilal-qiblati ma'muuman lillaahi ta'aala.</div>
-                        <div class="meaning">"Aku niat sholat fardhu Zuhur empat rakaat menghadap kiblat sebagai makmum karena Allah Ta'ala."</div>
+                <div class="card-body">
+                    <div class="content-wrapper">
+                        <div class="tabs">
+                            <button class="tab-btn active" onclick="switchTab('zuhur', 'alone', event)">Sendiri</button>
+                            <button class="tab-btn" onclick="switchTab('zuhur', 'makmum', event)">Makmum</button>
+                        </div>
+                        <div class="niat-container show" data-type="alone">
+                            <div class="arabic">أُصَلِّي فَرْضَ الظُّهْرِ أَرْبَعَ رَكَعَاتٍ مُسْتَقْبِلَ الْقِبْلَةِ أَدَاءً لِلّٰهِ تَعَالَى</div>
+                            <div class="latin">Ushalli fardhaz-Zhuhri arba'a raka'aatin mustaqbilal-qiblati adaa-an lillaahi ta'aala.</div>
+                            <div class="arti">"Aku niat sholat fardhu Zuhur empat rakaat menghadap kiblat saat ini karena Allah Ta'ala."</div>
+                        </div>
+                        <div class="niat-container" data-type="makmum">
+                            <div class="arabic">أُصَلِّي فَرْضَ الظُّهْرِ أَرْبَعَ رَكَعَاتٍ مُسْتَقْبِلَ الْقِبْلَةِ مَأْمُوْمًا لِلّٰهِ تَعَالَى</div>
+                            <div class="latin">Ushalli fardhaz-Zhuhri arba'a raka'aatin mustaqbilal-qiblati ma'muuman lillaahi ta'aala.</div>
+                            <div class="arti">"Aku niat sholat fardhu Zuhur empat rakaat menghadap kiblat sebagai makmum karena Allah Ta'ala."</div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="prayer-card asr" id="asr">
-                <div class="card-head" onclick="toggleCard('asr')">
-                    <div class="icon-wrap">⛅</div>
-                    <div class="card-info">
-                        <div class="info-title">Sholat Ashar</div>
-                        <div class="info-subtitle">Niat & Bacaan</div>
+            <div class="card ashar" id="card-ashar">
+                <div class="card-header" onclick="toggleCard('ashar')">
+                    <div class="header-left">
+                        <div class="icon-box">⛅</div>
+                        <div class="title-group">
+                            <h3>Ashar</h3>
+                            <span style="color:var(--c-ashar-dark)">Sholat Sore</span>
+                        </div>
                     </div>
                     <div class="rakaat-badge">4 Rakaat</div>
                 </div>
-                <div class="card-content">
-                    <div class="tab-wrapper">
-                        <button class="tab-btn active" onclick="switchTab('asr', 'alone', event)">Sendiri</button>
-                        <button class="tab-btn" onclick="switchTab('asr', 'makmum', event)">Makmum</button>
-                    </div>
-                    <div class="niat-box active" data-role="alone">
-                        <div class="arabic">أُصَلِّي فَرْضَ الْعَصْرِ أَرْبَعَ رَكَعَاتٍ مُسْتَقْبِلَ الْقِبْلَةِ أَدَاءً لِلّٰهِ تَعَالَى</div>
-                        <div class="latin">Ushalli fardhal-'Ashri arba'a raka'aatin mustaqbilal-qiblati adaa-an lillaahi ta'aala.</div>
-                        <div class="meaning">"Aku niat sholat fardhu Ashar empat rakaat menghadap kiblat saat ini karena Allah Ta'ala."</div>
-                    </div>
-                    <div class="niat-box" data-role="makmum">
-                        <div class="arabic">أُصَلِّي فَرْضَ الْعَصْرِ أَرْبَعَ رَكَعَاتٍ مُسْتَقْبِلَ الْقِبْلَةِ مَأْمُوْمًا لِلّٰهِ تَعَالَى</div>
-                        <div class="latin">Ushalli fardhal-'Ashri arba'a raka'aatin mustaqbilal-qiblati ma'muuman lillaahi ta'aala.</div>
-                        <div class="meaning">"Aku niat sholat fardhu Ashar empat rakaat menghadap kiblat sebagai makmum karena Allah Ta'ala."</div>
+                <div class="card-body">
+                    <div class="content-wrapper">
+                        <div class="tabs">
+                            <button class="tab-btn active" onclick="switchTab('ashar', 'alone', event)">Sendiri</button>
+                            <button class="tab-btn" onclick="switchTab('ashar', 'makmum', event)">Makmum</button>
+                        </div>
+                        <div class="niat-container show" data-type="alone">
+                            <div class="arabic">أُصَلِّي فَرْضَ الْعَصْرِ أَرْبَعَ رَكَعَاتٍ مُسْتَقْبِلَ الْقِبْلَةِ أَدَاءً لِلّٰهِ تَعَالَى</div>
+                            <div class="latin">Ushalli fardhal-'Ashri arba'a raka'aatin mustaqbilal-qiblati adaa-an lillaahi ta'aala.</div>
+                            <div class="arti">"Aku niat sholat fardhu Ashar empat rakaat menghadap kiblat saat ini karena Allah Ta'ala."</div>
+                        </div>
+                        <div class="niat-container" data-type="makmum">
+                            <div class="arabic">أُصَلِّي فَرْضَ الْعَصْرِ أَرْبَعَ رَكَعَاتٍ مُسْتَقْبِلَ الْقِبْلَةِ مَأْمُوْمًا لِلّٰهِ تَعَالَى</div>
+                            <div class="latin">Ushalli fardhal-'Ashri arba'a raka'aatin mustaqbilal-qiblati ma'muuman lillaahi ta'aala.</div>
+                            <div class="arti">"Aku niat sholat fardhu Ashar empat rakaat menghadap kiblat sebagai makmum karena Allah Ta'ala."</div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="prayer-card maghrib" id="maghrib">
-                <div class="card-head" onclick="toggleCard('maghrib')">
-                    <div class="icon-wrap">🌇</div>
-                    <div class="card-info">
-                        <div class="info-title">Sholat Maghrib</div>
-                        <div class="info-subtitle">Niat & Bacaan</div>
+            <div class="card maghrib" id="card-maghrib">
+                <div class="card-header" onclick="toggleCard('maghrib')">
+                    <div class="header-left">
+                        <div class="icon-box">🌇</div>
+                        <div class="title-group">
+                            <h3>Maghrib</h3>
+                            <span style="color:var(--c-maghrib-dark)">Sholat Petang</span>
+                        </div>
                     </div>
                     <div class="rakaat-badge">3 Rakaat</div>
                 </div>
-                <div class="card-content">
-                    <div class="tab-wrapper">
-                        <button class="tab-btn active" onclick="switchTab('maghrib', 'alone', event)">Sendiri</button>
-                        <button class="tab-btn" onclick="switchTab('maghrib', 'makmum', event)">Makmum</button>
-                    </div>
-                    <div class="niat-box active" data-role="alone">
-                        <div class="arabic">أُصَلِّي فَرْضَ الْمَغْرِبِ ثَلَاثَ رَكَعَاتٍ مُسْتَقْبِلَ الْقِبْلَةِ أَدَاءً لِلّٰهِ تَعَالَى</div>
-                        <div class="latin">Ushalli fardhal-Maghribi tsalaatsa raka'aatin mustaqbilal-qiblati adaa-an lillaahi ta'aala.</div>
-                        <div class="meaning">"Aku niat sholat fardhu Maghrib tiga rakaat menghadap kiblat saat ini karena Allah Ta'ala."</div>
-                    </div>
-                    <div class="niat-box" data-role="makmum">
-                        <div class="arabic">أُصَلِّي فَرْضَ الْمَغْرِبِ ثَلَاثَ رَكَعَاتٍ مُسْتَقْبِلَ الْقِبْلَةِ مَأْمُوْمًا لِلّٰهِ تَعَالَى</div>
-                        <div class="latin">Ushalli fardhal-Maghribi tsalaatsa raka'aatin mustaqbilal-qiblati ma'muuman lillaahi ta'aala.</div>
-                        <div class="meaning">"Aku niat sholat fardhu Maghrib tiga rakaat menghadap kiblat sebagai makmum karena Allah Ta'ala."</div>
+                <div class="card-body">
+                    <div class="content-wrapper">
+                        <div class="tabs">
+                            <button class="tab-btn active" onclick="switchTab('maghrib', 'alone', event)">Sendiri</button>
+                            <button class="tab-btn" onclick="switchTab('maghrib', 'makmum', event)">Makmum</button>
+                        </div>
+                        <div class="niat-container show" data-type="alone">
+                            <div class="arabic">أُصَلِّي فَرْضَ الْمَغْرِبِ ثَلَاثَ رَكَعَاتٍ مُسْتَقْبِلَ الْقِبْلَةِ أَدَاءً لِلّٰهِ تَعَالَى</div>
+                            <div class="latin">Ushalli fardhal-Maghribi tsalaatsa raka'aatin mustaqbilal-qiblati adaa-an lillaahi ta'aala.</div>
+                            <div class="arti">"Aku niat sholat fardhu Maghrib tiga rakaat menghadap kiblat saat ini karena Allah Ta'ala."</div>
+                        </div>
+                        <div class="niat-container" data-type="makmum">
+                            <div class="arabic">أُصَلِّي فَرْضَ الْمَغْرِبِ ثَلَاثَ رَكَعَاتٍ مُسْتَقْبِلَ الْقِبْلَةِ مَأْمُوْمًا لِلّٰهِ تَعَالَى</div>
+                            <div class="latin">Ushalli fardhal-Maghribi tsalaatsa raka'aatin mustaqbilal-qiblati ma'muuman lillaahi ta'aala.</div>
+                            <div class="arti">"Aku niat sholat fardhu Maghrib tiga rakaat menghadap kiblat sebagai makmum karena Allah Ta'ala."</div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="prayer-card isha" id="isha">
-                <div class="card-head" onclick="toggleCard('isha')">
-                    <div class="icon-wrap">🌙</div>
-                    <div class="card-info">
-                        <div class="info-title">Sholat Isya</div>
-                        <div class="info-subtitle">Niat & Bacaan</div>
+            <div class="card isya" id="card-isya">
+                <div class="card-header" onclick="toggleCard('isya')">
+                    <div class="header-left">
+                        <div class="icon-box">🌙</div>
+                        <div class="title-group">
+                            <h3>Isya</h3>
+                            <span style="color:var(--c-isya-dark)">Sholat Malam</span>
+                        </div>
                     </div>
                     <div class="rakaat-badge">4 Rakaat</div>
                 </div>
-                <div class="card-content">
-                    <div class="tab-wrapper">
-                        <button class="tab-btn active" onclick="switchTab('isha', 'alone', event)">Sendiri</button>
-                        <button class="tab-btn" onclick="switchTab('isha', 'makmum', event)">Makmum</button>
-                    </div>
-                    <div class="niat-box active" data-role="alone">
-                        <div class="arabic">أُصَلِّي فَرْضَ الْعِشَاءِ أَرْبَعَ رَكَعَاتٍ مُسْتَقْبِلَ الْقِبْلَةِ أَدَاءً لِلّٰهِ تَعَالَى</div>
-                        <div class="latin">Ushalli fardhal-'Isyaa-i arba'a raka'aatin mustaqbilal-qiblati adaa-an lillaahi ta'aala.</div>
-                        <div class="meaning">"Aku niat sholat fardhu Isya empat rakaat menghadap kiblat saat ini karena Allah Ta'ala."</div>
-                    </div>
-                    <div class="niat-box" data-role="makmum">
-                        <div class="arabic">أُصَلِّي فَرْضَ الْعِشَاءِ أَرْبَعَ رَكَعَاتٍ مُسْتَقْبِلَ الْقِبْلَةِ مَأْمُوْمًا لِلّٰهِ تَعَالَى</div>
-                        <div class="latin">Ushalli fardhal-'Isyaa-i arba'a raka'aatin mustaqbilal-qiblati ma'muuman lillaahi ta'aala.</div>
-                        <div class="meaning">"Aku niat sholat fardhu Isya empat rakaat menghadap kiblat sebagai makmum karena Allah Ta'ala."</div>
+                <div class="card-body">
+                    <div class="content-wrapper">
+                        <div class="tabs">
+                            <button class="tab-btn active" onclick="switchTab('isya', 'alone', event)">Sendiri</button>
+                            <button class="tab-btn" onclick="switchTab('isya', 'makmum', event)">Makmum</button>
+                        </div>
+                        <div class="niat-container show" data-type="alone">
+                            <div class="arabic">أُصَلِّي فَرْضَ الْعِشَاءِ أَرْبَعَ رَكَعَاتٍ مُسْتَقْبِلَ الْقِبْلَةِ أَدَاءً لِلّٰهِ تَعَالَى</div>
+                            <div class="latin">Ushalli fardhal-'Isyaa-i arba'a raka'aatin mustaqbilal-qiblati adaa-an lillaahi ta'aala.</div>
+                            <div class="arti">"Aku niat sholat fardhu Isya empat rakaat menghadap kiblat saat ini karena Allah Ta'ala."</div>
+                        </div>
+                        <div class="niat-container" data-type="makmum">
+                            <div class="arabic">أُصَلِّي فَرْضَ الْعِشَاءِ أَرْبَعَ رَكَعَاتٍ مُسْتَقْبِلَ الْقِبْلَةِ مَأْمُوْمًا لِلّٰهِ تَعَالَى</div>
+                            <div class="latin">Ushalli fardhal-'Isyaa-i arba'a raka'aatin mustaqbilal-qiblati ma'muuman lillaahi ta'aala.</div>
+                            <div class="arti">"Aku niat sholat fardhu Isya empat rakaat menghadap kiblat sebagai makmum karena Allah Ta'ala."</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -505,36 +420,44 @@
         </div>
 
         <footer>
-            <p>Dibuat dengan ❤️ untuk Anak Sholeh</p>
+            Dibuat dengan ❤️ untuk Anak Sholeh
         </footer>
-
     </div>
 
     <script>
-        function toggleCard(id) {
-            const card = document.getElementById(id);
-            const content = card.querySelector('.card-content');
-            
-            // Tutup kartu lain (Accordion Effect)
-            document.querySelectorAll('.card-content').forEach(el => {
-                if(el !== content) el.classList.remove('open');
-            });
+        function toggleCard(name) {
+            const card = document.getElementById('card-' + name);
+            const isActive = card.classList.contains('active');
 
-            // Toggle kartu yang diklik
-            content.classList.toggle('open');
+            // Opsional: Jika ingin gaya Accordion (menutup yang lain saat satu dibuka)
+            // Hapus komentar di bawah ini jika ingin fitur tersebut:
+            /*
+            document.querySelectorAll('.card').forEach(c => {
+                c.classList.remove('active');
+            });
+            */
+
+            // Toggle state kartu yang diklik
+            if (isActive) {
+                card.classList.remove('active');
+            } else {
+                card.classList.add('active');
+            }
         }
 
-        function switchTab(cardId, role, event) {
+        function switchTab(cardName, type, event) {
+            // Mencegah klik tombol menutup kartu (propagation)
             event.stopPropagation();
-            const card = document.getElementById(cardId);
+
+            const card = document.getElementById('card-' + cardName);
             
-            // Ganti tombol aktif
+            // Atur tombol aktif
             card.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
             event.target.classList.add('active');
 
-            // Ganti konten
-            card.querySelectorAll('.niat-box').forEach(box => box.classList.remove('active'));
-            card.querySelector(`.niat-box[data-role="${role}"]`).classList.add('active');
+            // Atur konten tampil
+            card.querySelectorAll('.niat-container').forEach(content => content.classList.remove('show'));
+            card.querySelector(`.niat-container[data-type="${type}"]`).classList.add('show');
         }
     </script>
 </body>
